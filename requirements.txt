@@ -1,7 +1,6 @@
-dash==0.35.1
-dash-core-components==0.42.1
-dash-html-components==0.13.4
+dash==1.14.0
+dash-core-components==1.10.2
+dash-html-components
 gunicorn==19.9.0
-jupyter==1.0.0
-numpy==1.15.4
-pandas==0.24.0
+numpy==1.19.1
+pandas==1.1.0

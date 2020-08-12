@@ -14,7 +14,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 # fig 0
 
-bigram_df = pd.read_csv('bigram_df.csv')
+bigram_df = pd.read_csv('data/bigram_df.csv')
 
 fig0 = px.bar(bigram_df, y="bigram", x="freq", color = 'freq', animation_frame="year", orientation = 'h',
 
@@ -43,7 +43,7 @@ fig0.update_layout(annotations=annotations)
 
 # fig 1
 
-us_df = pd.read_csv("us_df.csv")
+us_df = pd.read_csv("data/us_df.csv")
 
 title = 'Main Source for News'
 labels = ['U.S.']
@@ -141,22 +141,22 @@ fig1.update_layout(annotations=annotations)
 
 fig2 = go.Figure()
 
-df_pol = pd.read_csv('df_pol.csv')
+df_pol = pd.read_csv('data/df_pol.csv')
 
 
 # make subplots
 fig2.add_trace(
     go.Scatter(
-        x=df_pol[df_pol['polarity'] >= 0][df_pol['word_count'] >= 100]['year'],
-        y=df_pol[df_pol['polarity'] >= 0][df_pol['word_count'] >= 100]['polarity'],
+        x=df_pol[df_pol['polarity'] >= 0]['year'],
+        y=df_pol[df_pol['polarity'] >= 0]['polarity'],
         mode="markers",
         marker=dict(color='red')
     ))
 
 fig2.add_trace(
     go.Scatter(
-        x=df_pol[df_pol['polarity'] < 0][df_pol['word_count'] >= 100]['year'],
-        y=df_pol[df_pol['polarity'] < 0][df_pol['word_count'] >= 100]['polarity'],
+        x=df_pol[df_pol['polarity'] < 0]['year'],
+        y=df_pol[df_pol['polarity'] < 0]['polarity'],
         mode="markers",
         marker=dict(color='blue')
     ))
@@ -185,7 +185,7 @@ fig2.update_layout(annotations=annotations)
 
 # fig3
 
-df_pro = pd.read_csv('df_pro.csv')
+df_pro = pd.read_csv('data/df_pro.csv')
 
 fig3 = px.histogram(df_pro, x='polarity', histnorm='probability',
                 facet_col='producer', facet_col_wrap = 4)
